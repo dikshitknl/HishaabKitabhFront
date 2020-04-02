@@ -1,0 +1,36 @@
+<div class="col-md-4 mx-auto text-center"> </div>
+<div class="col-md-4 mx-auto text-center">
+<h3>Create Employee</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form #tForm="ngForm">
+    <div class="form-group">
+      <label for="name">agent</label>
+      <input type="text" class="form-control" id="agent" required ngModel  [(ngModel)]="donor.agent" name="agent">
+       </div>
+
+        <label for="name">member-id</label>
+       <div class="form-group">
+      <select class="form-control my-input"  [(ngModel)]="donor.member_id"  >
+				<option *ngFor="let column of member" [ngValue]="column.id">
+			     {{column.name}}
+        </option>
+	 </select>
+    </div>
+
+    
+
+    <div class="form-group">
+      <label for="name">quantity</label>
+      <input type="number" class="form-control" id="qty" required [(ngModel)]="donor.qty" name="qty">
+    </div>
+
+
+      <button class="button is-link" (click)="onSubmit(tForm)">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+</div>
+
+</div>

@@ -1,0 +1,116 @@
+<div class="level">
+  <div class="level-left">
+    <h5 class="title is-5">Product-Details</h5>
+  </div>
+  <div class="level-right">
+    <button class="button is-small is-success" (click)="onAddBtnClick()">
+      Add
+    </button>
+  </div>
+</div>
+
+<app-table [data]="sellDetails" [columns]="columns"></app-table>
+
+<div class="modal" [ngClass]="{ 'is-active': formModalActive }">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <form class="box" [formGroup]="customerDetailsFormGroup">
+      <div class="level-center">
+        Customer Details:
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-4 form-group">
+          <div class="field">
+            <label class="label is-small">Name</label>
+            <div class="control">
+              <input
+                class="input is-small"
+                type="text-area"
+                placeholder="Customer name"
+                [formControlName]="'name'"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4 form-group">
+          <div class="field">
+            <label class="label is-small">Address</label>
+            <div class="control">
+              <input
+                class="input is-small"
+                type="text-area"
+                placeholder="Customer Address"
+                [formControlName]="'address'"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4 form-group">
+          <div class="field">
+            <label class="label is-small">Phone</label>
+            <div class="control">
+              <input
+                class="input is-small"
+                type="text-area"
+                placeholder="Customer Phone"
+                [formControlName]="'phone'"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="level-center">
+        Sell Product Details:
+      </div>
+
+      <div formArrayName="sell">
+        <div
+          *ngFor="let phone of sellForms.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <div class="row">
+            <div class="col-xs-12 col-md-5 form-group">
+              <div class="field">
+                <label class="label is-small">Products</label>
+                <select class="form-control my-input" [formControlName]="'id'">
+                  <option *ngFor="let i of products" [ngValue]="i.id">
+                    {{ i.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-5 form-group">
+              <div class="field">
+                <label class="label is-small">Quantity</label>
+                <div class="control">
+                  <input
+                    class="input is-small"
+                    type="text-area"
+                    placeholder="Customer Phone"
+                    [formControlName]="'qty'"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <button style="margin-top:2rem;"class="button is-small is-success" (click)="deleteSell(i)">
+              Remove
+            </button>
+          </div>
+          
+        </div>
+        <button class="button is-small is-success" (click)="addSellFormGroup()">
+          + Product
+        </button>
+      </div>
+      <div class="control">
+        <button type="button" class="button is-small is-link" (click)="onFormSubmitBtnClick()">
+          Submit
+        </button>
+        <button type="button" class="button is-small is-link is-light" (click)="onFormCancelBtnClick()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

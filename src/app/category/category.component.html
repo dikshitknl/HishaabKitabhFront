@@ -1,0 +1,63 @@
+<div class="level">
+    <div class="level-left">
+        <h5 class="title is-5">Categories</h5>
+    </div>
+    <div class="level-right">
+        <button class="button is-small is-success"(click)="onAddBtnClick()">>Add</button>
+    </div>
+</div>
+
+<!-- <app-table [data]="categories" [columns]="columns" ></app-table> -->
+
+<div class="modal" [ngClass]="{'is-active': formModalActive}">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+
+        <form class="box" [formGroup]="categoryFormGroup">
+            <div class="field">
+                <label class="label is-small">Name</label>
+                <div class="control col col-md-3">
+                    <input class="input is-small" type="text" placeholder="Name"
+                        [formControlName]="'name'" />
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label is-small">details</label>
+                <div class="control">
+                    <input class="input is-small" type="text-area" placeholder="details"
+                        [formControlName]="'details'" />
+                </div>
+            </div>
+
+           
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button type="button" class="button is-small is-link" >
+                        Submit
+                    </button>
+                </div>
+                <div class="control">
+                    <button type="button" class="button is-small is-link is-light" (click)="onFormCancelBtnClick()" >
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div class="modal" >
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <h5 class="title is-5">Are you sure to delete</h5>
+            <div class="buttons">
+                <button type="button" class="button is-small is-link" >Yes</button>
+                <button type="button" class="button is-small is-link is-light">No</button>
+            </div>
+        </div>
+    </div>
+</div>

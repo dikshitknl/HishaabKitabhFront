@@ -1,0 +1,14 @@
+.box {
+  padding: 2rem;
+}
+p,
+button {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+p {
+  font-weight: bold;
+}
